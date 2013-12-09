@@ -19,7 +19,8 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
-        "symfony/monolog-bundle": "2.3.*"
+        "symfony/monolog-bundle": "2.3.*",
+        "ext-pdo": "*"
     },
     "minimum-stability": "dev",
     "repositories": [
