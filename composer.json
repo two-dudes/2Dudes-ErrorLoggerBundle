@@ -12,10 +12,10 @@
     ],
     "autoload": {
         "psr-0": {
-            "TwoDudes\\Bundle\\ErrorLoggerBundle\\": ""
+            "TwoDudes\\ErrorLoggerBundle\\": ""
         }
     },
-    "target-dir": "TwoDudes/Bundle/ErrorLoggerBundle",
+    "target-dir": "TwoDudes/ErrorLoggerBundle",
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
