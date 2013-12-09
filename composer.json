@@ -1,0 +1,38 @@
+{
+    "name": "twodudes/bootstrap-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony2 production error logger ",
+    "keywords": ["error logger", "error", "symfony2 error"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vasily Sokolov",
+            "email": "megawilddaddy@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "TwoDudes\\Bundle\\ErrorLoggerBundle\\": ""
+        }
+    },
+    "target-dir": "TwoDudes/Bundle/ErrorLoggerBundle",
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.*",
+        "symfony/monolog-bundle": "2.3.*"
+    },
+    "repositories": [
+        {
+            "type":"package",
+            "package": {
+                "version":"dev-master",
+                "name":"jlong/sass-twitter-bootstrap",
+                "source": {
+                    "url":"https://github.com/jlong/sass-twitter-bootstrap.git",
+                    "type":"git",
+                    "reference":"master"
+                }
+            }
+        }
+    ]
+}

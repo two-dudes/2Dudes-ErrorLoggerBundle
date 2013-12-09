@@ -1,0 +1,16 @@
+/app/bootstrap*
+/app/cache/*
+/app/logs/*
+/app/Resources/translations/*
+/vendor/
+/components/
+.rsync_cache
+.idea
+
+/web/images/sprites/*
+/web/bundles/
+/web/css
+/web/js
+/web/sitemaps/*
+
+/src/Mayzus/IndexBundle/Resources/translations/

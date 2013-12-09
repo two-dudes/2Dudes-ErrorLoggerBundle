@@ -1,0 +1,11 @@
+services:
+
+  two_dudes.storage.db:
+      class: TwoDudes\ErrorLoggerBundle\Error\Storage\DBStorageManager
+      arguments: [%two_dudes.storage_service_params%]
+
+  two_dudes.error_logger:
+      class: TwoDudes\ErrorLoggerBundle\Error\Logger
+      arguments: [%two_dudes.storage_service_id%]
+      calls:
+          - [setContainer, ["@service_container"]]

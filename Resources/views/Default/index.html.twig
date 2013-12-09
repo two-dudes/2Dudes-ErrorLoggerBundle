@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <style type="text/css">
+
+            .warning {
+                background-color: #ccccff;
+            }
+            .error, .fatal {
+                background-color: #ffcccc
+            }
+            .notice {
+                background-color: #ccffcc;
+            }
+            .container {
+                width: 960px;
+                margin: 10px auto;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th{
+                border: 1px solid #aaa;
+                padding: 5px 10px;
+                font: 14px Tahoma;
+            }
+
+            th {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Errors</h1>
+            <table class="table table-bordered table-condensed table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Message</th>
+                    <th>Count</th>
+                    <th>Type</th>
+                    <th>Last occured</th>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% for error in errors %}
+                    <tr class="{{ error.type }}">
+                        <td>{{ error.id }}</td>
+                        <td>{{ error.message }}</td>
+                        <td>{{ error.count }}</td>
+                        <td>{{ error.type }}</td>
+                        <td>{{ error.created_at }}</td>
+                        <td>
+                            <a class="btn btn-success" href="{{ url('two_dudes.errors.view', {id: error.id}) }}">View</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="{{ url('two_dudes.errors.remove', {id: error.id}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <style type="text/css">
+
+            .warning {
+                background-color: #ccccff;
+            }
+            .error, .fatal {
+                background-color: #ffcccc
+            }
+            .notice {
+                background-color: #ccffcc;
+            }
+            .container {
+                width: 960px;
+                margin: 10px auto;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th{
+                border: 1px solid #aaa;
+                padding: 5px 10px;
+                font: 14px Tahoma;
+            }
+
+            th {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ error.message }}</h1>
+            <a href="{{ url('two_dudes.errors.list') }}">Back to errors</a>
+            <table class="table table-bordered table-condensed table-striped">
+                <tr>
+                    <th>Last occured</th>
+                    <td>{{ error.created_at }}</td>
+                </tr>
+                <tr>
+                    <th>Count</th>
+                    <td>{{ error.count }}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ error.type }}</td>
+                </tr>
+                <tr>
+                    <th>Url</th>
+                    <td>{{ error.server.REQUEST_URI }}</td>
+                </tr>
+                <tr>
+                    <th>Server</th>
+                    <td>
+                        {% for k, v in error.server %}
+                            {{ k }} => {{ v }} <br/>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
