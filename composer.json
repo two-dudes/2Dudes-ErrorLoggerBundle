@@ -2,7 +2,7 @@
     "name": "twodudes/error-logger-bundle",
     "type": "symfony-bundle",
     "description": "Symfony2 production error logger. Logs notices, warnings, exceptions and fatal exceptions. Groups similar errors together and displays additional server information.",
-    "keywords": ["error logger", "error", "symfony2 error"],
+    "keywords": ["error logger", "error", "symfony2 error", "production", "logger"],
     "license": "MIT",
     "authors": [
         {
