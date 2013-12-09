@@ -8,7 +8,15 @@ This bundle helps you to accumulate and browse errors in the production environm
 
     "twodudes/error-logger-bundle": "dev-master"
 
-2. In your routing.yml:
+2. Run "composer update" and add in the bundles configuration array:
+
+```
+
+new TwoDudes\ErrorLoggerBundle\TwoDudesErrorLoggerBundle()
+
+```
+
+3. In your routing.yml:
 
 ```
 
@@ -17,7 +25,7 @@ This bundle helps you to accumulate and browse errors in the production environm
 
 ```
 
-3. In your config.prod:
+4. In your config.prod:
 
 ```
 
@@ -31,6 +39,26 @@ two_dudes:
         db_name: xxxxx
         db_user: xxxxx
         db_password: xxxxx
+
+```
+
+5. Create a table
+
+```
+
+CREATE TABLE `errors` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `message` text,
+  `trace` text,
+  `created_at` datetime DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `line` int(10) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `count` int(11) DEFAULT '0',
+  `hash` varchar(255) DEFAULT NULL,
+  `server` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8
 
 ```
 
