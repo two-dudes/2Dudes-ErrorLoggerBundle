@@ -1,0 +1,1 @@
+See Wiki - https://github.com/megawilddaddy/2Dudes-ErrorLoggerBundle/wiki
