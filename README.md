@@ -4,11 +4,11 @@ This bundle helps you to accumulate and browse errors in the production environm
 
 #### Installation
 
-1. In your composer.json require section:
+1) In your composer.json require section:
 
     "twodudes/error-logger-bundle": "dev-master"
 
-2. Run "composer update" and add in the bundles configuration array:
+2) Run "composer update" and add in the bundles configuration array:
 
 ```
 
@@ -16,7 +16,7 @@ new TwoDudes\ErrorLoggerBundle\TwoDudesErrorLoggerBundle()
 
 ```
 
-3. In your routing.yml:
+3) In your routing.yml:
 
 ```
 
@@ -25,7 +25,7 @@ new TwoDudes\ErrorLoggerBundle\TwoDudesErrorLoggerBundle()
 
 ```
 
-4. In your config.prod:
+4) In your config.prod:
 
 ```
 
@@ -42,24 +42,14 @@ two_dudes:
 
 ```
 
-5. Create a table
+5) Create a table to store errors:
 
 ```
 
-CREATE TABLE `errors` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `message` text,
-  `trace` text,
-  `created_at` datetime DEFAULT NULL,
-  `file` varchar(255) DEFAULT NULL,
-  `line` int(10) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `count` int(11) DEFAULT '0',
-  `hash` varchar(255) DEFAULT NULL,
-  `server` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8
+php app/console twodudes:errorlogger:setup
 
 ```
 
-Now you can access /_errors page, where everything will be displayed. Don't forget to protect it with a firewall. If you want to create your own storage - just implement StorageManagerInterface.
+Now you can access /_errors page, where everything will be displayed.
+Don't forget to protect it with a firewall.
+If you want to create your own storage - just implement StorageManagerInterface.
