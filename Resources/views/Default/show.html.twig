@@ -61,15 +61,19 @@
                     <th>Trace</th>
                     <td>{{ error.trace|nl2br }}</td>
                 </tr>
-                <tr>
-                    <th>Url</th>
-                    <td>{{ error.server.REQUEST_URI }}</td>
-                </tr>
+                {% if 'REQUEST_URI' in error.server|keys %}
+                    <tr>
+                        <th>Url</th>
+                        <td>{{ error.server.REQUEST_URI }}</td>
+                    </tr>
+                {% endif %}
                 <tr>
                     <th>Server</th>
                     <td>
-                        {% for k, v in error.server %}
-                            {{ k }} => {{ v }} <br/>
+                        {% for key, val in error.server %}
+                            {% if val is not iterable %}
+                                {{ key }} => {{ val }} <br/>
+                            {% endif %}
                         {% endfor %}
                     </td>
                 </tr>
