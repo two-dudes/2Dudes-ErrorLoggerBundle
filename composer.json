@@ -1,5 +1,5 @@
 {
-    "name": "twodudes/bootstrap-bundle",
+    "name": "twodudes/error-logger-bundle",
     "type": "symfony-bundle",
     "description": "Symfony2 production error logger ",
     "keywords": ["error logger", "error", "symfony2 error"],
