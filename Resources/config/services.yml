@@ -9,3 +9,10 @@ services:
       arguments: [%two_dudes.storage_service_id%]
       calls:
           - [setContainer, ["@service_container"]]
+
+  two_dudes.exceptionListener:
+      class: TwoDudes\ErrorLoggerBundle\EventListener\ExceptionListener
+      calls:
+        - [setContainer, ["@service_container"]]EventListener
+      tags:
+          - { name: 'kernel.event_listener', event: 'kernel.exception' }
