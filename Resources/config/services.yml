@@ -13,6 +13,6 @@ services:
   two_dudes.exceptionListener:
       class: TwoDudes\ErrorLoggerBundle\EventListener\ExceptionListener
       calls:
-        - [setContainer, ["@service_container"]]EventListener
+          - [setContainer, ["@service_container"]]
       tags:
           - { name: 'kernel.event_listener', event: 'kernel.exception' }

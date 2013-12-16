@@ -53,3 +53,11 @@ php app/console twodudes:errorlogger:setup
 Now you can access /_errors page, where everything will be displayed.
 Don't forget to protect it with a firewall.
 If you want to create your own storage - just implement StorageManagerInterface.
+
+TIPS:
+
+How to work doctrine migrations.
+
+doctrine:
+    dbal:
+        schema_filter: ~^(?!errors)~
