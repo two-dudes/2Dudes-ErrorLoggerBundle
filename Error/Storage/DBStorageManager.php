@@ -60,7 +60,7 @@ class DBStorageManager implements StorageManagerInterface
             if ($stmt->rowCount() > 0) {
                 $this->getPdo()->prepare("UPDATE errors SET count = count + 1, created_at = CURRENT_TIMESTAMP WHERE hash = :hash")->execute(array(':hash' => $error->getHashKey()));
             } else {
-                $stmt = $this->getPdo()->prepare("INSERT INTO errors(message, trace, created_at, file, line, type, hash, server) VALUES(?,?,?,?,?,?,?,?)");
+                $stmt = $this->getPdo()->prepare("INSERT INTO errors(count, message, trace, created_at, file, line, type, hash, server) VALUES(1,?,?,?,?,?,?,?,?)");
                 $stmt->execute(array(
                     $error->getMessage(),
                     $error->getTrace(),
