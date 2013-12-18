@@ -54,10 +54,40 @@ Now you can access /_errors page, where everything will be displayed.
 Don't forget to protect it with a firewall.
 If you want to create your own storage - just implement StorageManagerInterface.
 
-TIPS:
+#### TIPS:
 
-How to work doctrine migrations.
+1) How to work doctrine migrations.
+
+```
 
 doctrine:
     dbal:
         schema_filter: ~^(?!errors)~
+
+
+```
+
+2) How to protect /_errors page in security.yml
+
+```
+
+security:
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+
+    providers:
+        inmemory:
+            memory:
+                users:
+                    admin: { password: adminpass }
+
+    firewalls:
+        errors:
+            pattern:  ^/_errors
+            http_basic:
+                provider: inmemory
+
+
+```
