@@ -21,8 +21,10 @@ class Exception extends AbstractError
         /** @var \Exception $exception */
         $exception = $context['exception'];
 
-        $this->line = $exception->getLine();
-        $this->file = $exception->getFile();
-        $this->trace = $exception->getTraceAsString();
+        if ($exception instanceof \Exception) {
+            $this->line = $exception->getLine();
+            $this->file = $exception->getFile();
+            $this->trace = $exception->getTraceAsString();
+        }
     }
 }
