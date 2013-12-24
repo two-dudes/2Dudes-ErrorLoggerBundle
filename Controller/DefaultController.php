@@ -27,4 +27,11 @@ class DefaultController extends Controller
 
         return new RedirectResponse($this->generateUrl('two_dudes.errors.list'));
     }
+
+    public function clearAction()
+    {
+        $this->get('two_dudes.error_logger')->getStorage()->clearErrors();
+
+        return new RedirectResponse($this->generateUrl('two_dudes.errors.list'));
+    }
 }

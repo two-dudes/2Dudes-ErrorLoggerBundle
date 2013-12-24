@@ -2,6 +2,10 @@ two_dudes.errors.list:
     pattern:  /_errors
     defaults: { _controller: TwoDudesErrorLoggerBundle:Default:index }
 
+two_dudes.errors.clear:
+    pattern:  /_errors/clear
+    defaults: { _controller: TwoDudesErrorLoggerBundle:Default:clear }
+
 two_dudes.errors.view:
     pattern:  /_errors/{id}
     defaults: { _controller: TwoDudesErrorLoggerBundle:Default:show }

@@ -105,4 +105,12 @@ class DBStorageManager implements StorageManagerInterface
     {
         $this->getPdo()->prepare("DELETE FROM errors WHERE id = :id")->execute(array(':id' => $id));
     }
+
+    /**
+     *
+     */
+    public function clearErrors()
+    {
+        $this->getPdo()->prepare("DELETE FROM errors WHERE 1 = 1")->execute();
+    }
 }

@@ -16,6 +16,8 @@ interface StorageManagerInterface
     public function fetchErrors();
     
     public function fetchError($id);
-    
+
     public function removeError($id);
+
+    public function clearErrors();
 } 
