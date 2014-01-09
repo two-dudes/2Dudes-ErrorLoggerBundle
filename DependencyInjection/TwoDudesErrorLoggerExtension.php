@@ -24,6 +24,13 @@ class TwoDudesErrorLoggerExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        if (!isset($config['error_logger'])) {
+            $container->setParameter('two_dudes.error_logger_enabled', false);
+            return;
+        } else {
+            $container->setParameter('two_dudes.error_logger_enabled', true);
+        }
+
         $container->setParameter('two_dudes.storage_service_id', $config['error_logger']['storage']['service']);
         $container->setParameter('two_dudes.storage_service_params', $config['error_logger']['storage']['params']);
 

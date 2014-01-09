@@ -9,6 +9,10 @@ class TwoDudesErrorLoggerBundle extends Bundle
 {
     public function boot()
     {
+        if (!$this->container->getParameter('two_dudes.error_logger_enabled')) {
+            return;
+        }
+
         $logger = $this->container->get('two_dudes.error_logger');
 
         $handler = new ErrorHandler($logger);
