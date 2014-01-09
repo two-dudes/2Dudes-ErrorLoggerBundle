@@ -19,12 +19,13 @@ class Exception extends AbstractError
     public function processContext(array $context = array())
     {
         /** @var \Exception $exception */
-        $exception = $context['exception'];
-
-        if ($exception instanceof \Exception) {
-            $this->line = $exception->getLine();
-            $this->file = $exception->getFile();
-            $this->trace = $exception->getTraceAsString();
+        if (isset($context['exception'])) {
+            $exception = $context['exception'];
+            if ($exception instanceof \Exception) {
+                $this->line = $exception->getLine();
+                $this->file = $exception->getFile();
+                $this->trace = $exception->getTraceAsString();
+            }
         }
     }
 }
