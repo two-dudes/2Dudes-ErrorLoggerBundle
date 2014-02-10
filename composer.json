@@ -18,8 +18,8 @@
     "target-dir": "TwoDudes/ErrorLoggerBundle",
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.3.*",
-        "symfony/monolog-bundle": "2.3.*",
+        "symfony/symfony": ">=2.3.0",
+        "symfony/monolog-bundle": ">=2.3.0",
         "ext-pdo": "*"
     },
     "minimum-stability": "dev",
