@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vin
- * Date: 16/12/13
- * Time: 10:33
- */
 
 namespace TwoDudes\ErrorLoggerBundle\EventListener;
 
@@ -17,6 +11,9 @@ class ExceptionListener extends ContainerAware
     public function onKernelException(GetResponseForExceptionEvent $exception)
     {
         $exception = $exception->getException();
+        if ($exception->getStatusCode() == 404 && !$this->container->getParameter('two_dudes.log404')) {
+            return;
+        }
         $this->container->get('two_dudes.error_logger')->error($exception->getMessage(), array('exception' => $exception));
     }
 } 

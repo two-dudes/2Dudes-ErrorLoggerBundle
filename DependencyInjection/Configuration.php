@@ -38,6 +38,7 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                             ->end()
                         ->end()
+                        ->scalarNode('log404')->defaultValue(true)->end()
                     ->end()
                 ->end()
             ->end();

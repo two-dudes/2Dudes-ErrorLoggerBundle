@@ -31,6 +31,7 @@ class TwoDudesErrorLoggerExtension extends Extension
             $container->setParameter('two_dudes.error_logger_enabled', true);
         }
 
+        $container->setParameter('two_dudes.log404', $config['error_logger']['log404']);
         $container->setParameter('two_dudes.storage_service_id', $config['error_logger']['storage']['service']);
         $container->setParameter('two_dudes.storage_service_params', $config['error_logger']['storage']['params']);
 
