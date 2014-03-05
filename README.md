@@ -89,5 +89,15 @@ security:
             http_basic:
                 provider: inmemory
 
+```
+
+3) Disable 404 errors logging
+(Which are 'no route found')
+
+```
+
+two_dudes:
+  error_logger:
+    log404: false
 
 ```

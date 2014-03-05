@@ -11,7 +11,7 @@ class ExceptionListener extends ContainerAware
     public function onKernelException(GetResponseForExceptionEvent $exception)
     {
         $exception = $exception->getException();
-        if ($exception->getStatusCode() == 404 && !$this->container->getParameter('two_dudes.log404')) {
+        if (method_exists($exception, 'getStatusCode') && $exception->getStatusCode() == 404 && !$this->container->getParameter('two_dudes.log404')) {
             return;
         }
         $this->container->get('two_dudes.error_logger')->error($exception->getMessage(), array('exception' => $exception));
