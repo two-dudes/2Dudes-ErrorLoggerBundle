@@ -18,12 +18,12 @@ use TwoDudes\ErrorLoggerBundle\Error\ErrorType\AbstractError;
 class DBStorageManager implements StorageManagerInterface
 {
     /**
-     * @var
+     * @var PDO
      */
     protected $pdo;
 
     /**
-     * @var
+     * @var array
      */
     protected $params;
 
@@ -60,7 +60,7 @@ class DBStorageManager implements StorageManagerInterface
             if ($stmt->rowCount() > 0) {
                 $this->getPdo()->prepare("UPDATE errors SET count = count + 1, created_at = CURRENT_TIMESTAMP WHERE hash = :hash")->execute(array(':hash' => $error->getHashKey()));
             } else {
-                $stmt = $this->getPdo()->prepare("INSERT INTO errors(count, message, trace, created_at, file, line, type, hash, server) VALUES(1,?,?,?,?,?,?,?,?)");
+                $stmt = $this->getPdo()->prepare("INSERT INTO errors(count, message, trace, created_at, file, line, type, hash, server, tokenData) VALUES(1,?,?,?,?,?,?,?,?,?)");
                 $stmt->execute(array(
                     $error->getMessage(),
                     $error->getTrace(),
@@ -69,7 +69,8 @@ class DBStorageManager implements StorageManagerInterface
                     $error->getLine(),
                     $error->getType(),
                     $error->getHashKey(),
-                    $error->getServer()
+                    $error->getServer(),
+                    $error->getTokenData()
                 ));
             }
 
@@ -92,7 +93,6 @@ class DBStorageManager implements StorageManagerInterface
     {
         $stmt = $this->getPdo()->prepare("SELECT * FROM errors WHERE id = :id");
         $stmt->execute(array(':id' => $id));
-
         $error = $stmt->fetchObject();
         $error->server = unserialize($error->server);
         return $error;

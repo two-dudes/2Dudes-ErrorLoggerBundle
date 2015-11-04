@@ -12,6 +12,8 @@ namespace TwoDudes\ErrorLoggerBundle\Error;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use TwoDudes\ErrorLoggerBundle\Error\ErrorType\Exception;
 use TwoDudes\ErrorLoggerBundle\Error\ErrorType\Factory;
 use TwoDudes\ErrorLoggerBundle\Error\ErrorType\FatalException;
@@ -187,6 +189,17 @@ class Logger extends ContainerAware implements LoggerInterface
         $error = Factory::createError($level);
         $error->setMessage($message);
         $error->processContext($context);
+
+        /** @var TokenInterface $token */
+        $error->setTokenData("No user is logged in");
+        $token = $this->container->get('security.token_storage')->getToken();
+        if ($token) {
+            $user = $token->getUser();
+            if ($user instanceof UserInterface) {
+                $error->setTokenData("User: {$user->getUsername()}, Roles: " . implode(",", $user->getRoles()));
+            }
+        }
+
         $this->errors[]= $error;
     }
 }

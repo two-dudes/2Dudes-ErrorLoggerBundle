@@ -16,6 +16,10 @@ namespace TwoDudes\ErrorLoggerBundle\Error\ErrorType;
  * Class AbstractError
  * @package TwoDudes\ErrorLoggerBundle\Error\ErrorType
  */
+/**
+ * Class AbstractError
+ * @package TwoDudes\ErrorLoggerBundle\Error\ErrorType
+ */
 abstract class AbstractError
 {
     /**
@@ -47,6 +51,11 @@ abstract class AbstractError
      * @var
      */
     protected $server;
+
+    /**
+     * @var
+     */
+    protected $tokenData;
 
     /**
      *
@@ -167,5 +176,21 @@ abstract class AbstractError
     public function getServer()
     {
         return $this->server;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTokenData()
+    {
+        return $this->tokenData;
+    }
+
+    /**
+     * @param mixed $tokenData
+     */
+    public function setTokenData($tokenData)
+    {
+        $this->tokenData = $tokenData;
     }
 }

@@ -43,6 +43,7 @@ class CreateTableCommand extends ContainerAwareCommand
               `type` varchar(255) DEFAULT NULL,
               `count` int(11) DEFAULT '0',
               `hash` varchar(255) DEFAULT NULL,
+              `tokenData` varchar(255) DEFAULT NULL,
               `server` text,
               PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
