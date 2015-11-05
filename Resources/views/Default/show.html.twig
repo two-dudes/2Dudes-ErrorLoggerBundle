@@ -39,8 +39,16 @@
                     <td>{{ error.line }}</td>
                 </tr>
                 <tr>
+                    <th>URL</th>
+                    <td>{{ error.uri }}</td>
+                </tr>
+                <tr>
                     <th>Token Data</th>
                     <td>{{ error.tokenData }}</td>
+                </tr>
+                <tr>
+                    <th>POST</th>
+                    <th>{{ error.post|nl2br }}</th>
                 </tr>
                 <tr>
                     <th>Trace</th>
@@ -54,13 +62,7 @@
                 {% endif %}
                 <tr>
                     <th>Server</th>
-                    <td>
-                        {% for key, val in error.server %}
-                            {% if val is not iterable %}
-                                {{ key }} => {{ val }} <br/>
-                            {% endif %}
-                        {% endfor %}
-                    </td>
+                    <th>{{ error.server|nl2br }}</th>
                 </tr>
             </table>
         </div>

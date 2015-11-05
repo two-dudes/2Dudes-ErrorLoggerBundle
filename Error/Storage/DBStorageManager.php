@@ -60,7 +60,7 @@ class DBStorageManager implements StorageManagerInterface
             if ($stmt->rowCount() > 0) {
                 $this->getPdo()->prepare("UPDATE errors SET count = count + 1, created_at = CURRENT_TIMESTAMP WHERE hash = :hash")->execute(array(':hash' => $error->getHashKey()));
             } else {
-                $stmt = $this->getPdo()->prepare("INSERT INTO errors(count, message, trace, created_at, file, line, type, hash, server, tokenData) VALUES(1,?,?,?,?,?,?,?,?,?)");
+                $stmt = $this->getPdo()->prepare("INSERT INTO errors(count, message, trace, created_at, file, line, type, hash, server, tokenData, post, uri) VALUES(1,?,?,?,?,?,?,?,?,?,?,?)");
                 $stmt->execute(array(
                     $error->getMessage(),
                     $error->getTrace(),
@@ -70,7 +70,9 @@ class DBStorageManager implements StorageManagerInterface
                     $error->getType(),
                     $error->getHashKey(),
                     $error->getServer(),
-                    $error->getTokenData()
+                    $error->getTokenData(),
+                    $error->getPost(),
+                    $error->getUri()
                 ));
             }
 
@@ -94,7 +96,8 @@ class DBStorageManager implements StorageManagerInterface
         $stmt = $this->getPdo()->prepare("SELECT * FROM errors WHERE id = :id");
         $stmt->execute(array(':id' => $id));
         $error = $stmt->fetchObject();
-        $error->server = unserialize($error->server);
+        $error->server = var_export(unserialize($error->server), true);
+        $error->post = var_export(unserialize($error->post), true);
         return $error;
     }
 

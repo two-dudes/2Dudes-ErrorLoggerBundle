@@ -200,6 +200,15 @@ class Logger extends ContainerAware implements LoggerInterface
             }
         }
 
+        $error->setPost(serialize($_POST));
+
+        if (isset($_SERVER['HTTP_HOST'])) {
+            $uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+            $error->setUri($uri);
+        } else {
+            $error->setUri('no url was called');
+        }
+
         $this->errors[]= $error;
     }
 }

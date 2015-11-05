@@ -20,6 +20,10 @@ namespace TwoDudes\ErrorLoggerBundle\Error\ErrorType;
  * Class AbstractError
  * @package TwoDudes\ErrorLoggerBundle\Error\ErrorType
  */
+/**
+ * Class AbstractError
+ * @package TwoDudes\ErrorLoggerBundle\Error\ErrorType
+ */
 abstract class AbstractError
 {
     /**
@@ -53,9 +57,51 @@ abstract class AbstractError
     protected $server;
 
     /**
-     * @var
+     * @var string
      */
     protected $tokenData;
+
+    /**
+     * @var string
+     */
+    protected $post;
+
+    /**
+     * @var
+     */
+    protected $uri;
+
+    /**
+     * @return mixed
+     */
+    public function getUri()
+    {
+        return $this->uri;
+    }
+
+    /**
+     * @param mixed $uri
+     */
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param mixed $post
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
+    }
 
     /**
      *
